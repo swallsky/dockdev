@@ -28,6 +28,12 @@ DOCKER_HOST_IP=10.0.75.1
 # 支持windows路径
 COMPOSE_CONVERT_WINDOWS_PATHS=1
 
+### WORKSPACE #################################################
+# 控制台用户id
+WORKSPACE_PUID=1000
+# 控制台组id
+WORKSPACE_PGID=1000
+
 ### NGINX #################################################
 # http主机端口
 NGINX_HOST_HTTP_PORT=80

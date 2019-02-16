@@ -10,9 +10,9 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && apk add --no-cache bash
 # add a non-root user dockdev
 ARG PUID=1000
-#ENV PUID ${PUID}
+ENV PUID ${PUID}
 ARG PGID=1000
-#ENV PGID ${PGID}
+ENV PGID ${PGID}
 RUN addgroup -g ${PGID} -S docker_env \
     && adduser -u ${PUID} -G docker_env -D -H dockdev
 
