@@ -13,7 +13,7 @@ RUN addgroup -g 1000 docker_env \
     && adduser -u 1000 -G docker_env -D -H dockdev
 
 # Composer install
-RUN curl -sS https://getcomposer.org/installer | php \
+RUN curl -sS http://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
     && chmod u+x /usr/local/bin/composer
 
