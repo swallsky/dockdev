@@ -19,7 +19,8 @@ RUN addgroup -g 1000 docker_env \
 # Composer install
 RUN curl -sS http://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
-    && chmod u+x /usr/local/bin/composer
+    && chmod u+x /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 RUN rm /var/cache/apk/* \
     && mkdir -p /var/www
