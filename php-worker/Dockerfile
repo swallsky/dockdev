@@ -11,7 +11,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && apk add --no-cache bash \
     && apk add git \
     && apk add supervisor \
-    && docker-php-ext-install mysqli pdo pdo_mysql zip
+    && docker-php-ext-install mysqli pdo pdo_mysql
 # add a non-root user dockdev
 RUN addgroup -g 1000 docker_env \
     && adduser -u 1000 -G docker_env -D -H dockdev

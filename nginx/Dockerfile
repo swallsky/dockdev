@@ -13,8 +13,7 @@ RUN apk update \
 
 # Set upstream conf and remove the default conf
 RUN echo "upstream php-upstream { server php-fpm:9000; }" > /etc/nginx/conf.d/upstream.conf \
-    && rm /etc/nginx/conf.d/default.conf \
-    && rm -r /var/www/html
+    && rm /etc/nginx/conf.d/default.conf
 
 ADD ./startup.sh /opt/startup.sh
 RUN sed -i 's/\r//g' /opt/startup.sh

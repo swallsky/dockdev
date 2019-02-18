@@ -8,6 +8,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && apk update \
     && apk upgrade \
     && apk add --no-cache openssl \
-    && apk add --no-cache bash
+    && apk add --no-cache bash \
     && npm config set registry https://registry.npm.taobao.org
 
