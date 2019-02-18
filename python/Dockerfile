@@ -9,3 +9,8 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && apk add --no-cache openssl \
     && apk add --no-cache bash
 
+#Add pip install mirror:
+RUN mkdir ~/.pip \
+    && echo "[global] \
+index-url = http://pypi.tuna.tsinghua/simple \
+" > ~/.pip/pip.conf
