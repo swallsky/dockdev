@@ -85,6 +85,7 @@ services:
           - NODE_VERSION=${NODE_VERSION}
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      tty: true
       networks:
         - frontend
         - backend
