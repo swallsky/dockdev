@@ -1,5 +1,5 @@
-ARG PHP_VERSION=${PHP_VERSION}
-FROM php:${PHP_VERSION}-fpm-alpine
+ARG PHP_VERSION=7.2
+FROM php:${PHP_VERSION}-fpm-alpine3.9
 
 USER root
 
