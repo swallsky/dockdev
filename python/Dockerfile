@@ -1,4 +1,5 @@
-FROM python:3.6.8-alpine3.9
+ARG PYTHON_VERSION=3.6.8
+FROM python:${PYTHON_VERSION}-alpine3.9
 
 USER root
 
@@ -16,15 +17,11 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
         libc-dev \
         linux-headers \
         pcre-dev \
+        jpeg-dev zlib-dev \
      && mkdir /root/.pip
 
 #Add pip install mirror:
 COPY ./pip.conf /root/.pip/pip.conf
 
-# pip add uwsgi flask
-#RUN pip install uwsgi flask \
-#    && apk del \
-#        gcc \
-#        libc-dev \
-#        linux-headers \
-#    && rm -rf /tmp/*
+# flask default port
+EXPOSE 5000

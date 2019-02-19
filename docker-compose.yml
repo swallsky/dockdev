@@ -100,3 +100,5 @@ services:
       networks:
         - frontend
         - backend
+      ports:
+        - "${FLASK_PORT}:5000"
