@@ -89,3 +89,14 @@ services:
       networks:
         - frontend
         - backend
+
+### Python ################################################
+    python:
+      build:
+        context: ./python
+      volumes:
+        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      tty: true
+      networks:
+        - frontend
+        - backend
