@@ -1,3 +1,4 @@
+# https://github.com/tiangolo/uwsgi-nginx-docker/tree/master/python3.6-alpine3.8
 ARG PYTHON_VERSION=3.6.8
 FROM python:${PYTHON_VERSION}-alpine3.9
 
@@ -10,18 +11,29 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
     && apk add --no-cache openssl \
     && apk add --no-cache bash \
     && apk add \
-        libuuid \
-        pcre \
-        mailcap \
         gcc \
         libc-dev \
-        linux-headers \
+        make \
+        openssl-dev \
         pcre-dev \
-        jpeg-dev zlib-dev \
+        zlib-dev \
+        linux-headers \
+		curl \
+		gnupg1 \
+		libxslt-dev \
+		gd-dev \
+		geoip-dev \
+        libuuid \
+#        pcre \
+        mailcap \
+        jpeg-dev \
      && mkdir /root/.pip
+#     && adduser -D -H -u 1000 -s /bin/bash uwsgi-data
 
-#Add pip install mirror:
+# Add pip install mirror:
 COPY ./pip.conf /root/.pip/pip.conf
 
-# flask default port
-EXPOSE 5000
+# Install uWSGI
+RUN apk add --no-cache uwsgi-python3
+
+EXPOSE 9090

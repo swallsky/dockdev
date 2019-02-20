@@ -96,9 +96,8 @@ services:
         context: ./python
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+        - ${UWSGI_LOG_PATH}:/var/log/
       tty: true
       networks:
         - frontend
         - backend
-      ports:
-        - "${FLASK_PORT}:5000"

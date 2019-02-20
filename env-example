@@ -54,7 +54,7 @@ NODE_VERSION=10.15.1
 
 ### PYTHON #################################################
 PYTHON_VERSION=3.6.8
-FLASK_PORT=5000
+UWSGI_LOG_PATH=./logs/uwsgi/
 
 ### MYSQL #################################################
 # mysql版本信息,默认为5.7
