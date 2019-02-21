@@ -53,6 +53,7 @@ services:
         - "${NGINX_HOST_HTTPS_PORT}:443"
       depends_on:
         - php-fpm
+        - python
       networks:
         - frontend
         - backend
@@ -97,7 +98,11 @@ services:
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${UWSGI_LOG_PATH}:/var/log/
-      tty: true
+#      tty: true
+#      expose:
+#        - "5000"
+      ports:
+        - "8080:5000"
       networks:
         - frontend
         - backend

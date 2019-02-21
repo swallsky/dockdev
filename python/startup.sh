@@ -1,1 +1,0 @@
-uwsgi -s :9090 -M -p 4 -t 30 --limit-as 128 -R 10000 -d /var/log/uwsgi.log

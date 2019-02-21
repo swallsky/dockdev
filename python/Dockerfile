@@ -32,8 +32,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
 
 # Add pip install mirror:
 COPY ./pip.conf /root/.pip/pip.conf
+COPY ./require.txt /root/require.txt
 
 # Install uWSGI
-RUN apk add --no-cache uwsgi-python3
+RUN apk add --no-cache uwsgi-python3 \
+    && pip install -r /root/require.txt
 
-EXPOSE 9090
+WORKDIR /var/www/python/sscmspy
+
+CMD ["./artisan","runserver"]
+
+EXPOSE 5000
