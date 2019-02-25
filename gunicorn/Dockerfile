@@ -34,12 +34,14 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories 
 COPY ./pip.conf /root/.pip/pip.conf
 COPY ./require.txt /root/require.txt
 
-# Install uWSGI
-RUN apk add --no-cache uwsgi-python3 \
+# Install gunicorn
+RUN pip install gunicorn \
     && pip install -r /root/require.txt
 
+# work dir
 WORKDIR /var/www/python/sscmspy
 
-CMD ["./artisan","runserver"]
+# 容器启动时 启动
+CMD ["gunicorn","-b 0.0.0.0:5000","main:app"]
 
 EXPOSE 5000

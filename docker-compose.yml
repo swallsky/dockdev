@@ -53,7 +53,7 @@ services:
         - "${NGINX_HOST_HTTPS_PORT}:443"
       depends_on:
         - php-fpm
-        - python
+        - gunicorn
       networks:
         - frontend
         - backend
@@ -91,14 +91,14 @@ services:
         - frontend
         - backend
 
-### Python ################################################
-    python:
+### Python Gunicorn ################################################
+    gunicorn:
       build:
-        context: ./python
+        context: ./gunicorn
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-        - ${UWSGI_LOG_PATH}:/var/log/
-#      tty: true
+        - ${WSGI_LOG_PATH}:/var/log/
+      tty: true
 #      expose:
 #        - "5000"
       ports:
