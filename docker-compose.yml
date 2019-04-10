@@ -13,6 +13,7 @@ volumes:
 services:
 ### PHP-FPM ##############################################
     php-fpm:
+      restart: always # docker启动自动重启
       build:
         context: ./php-fpm
       volumes:
@@ -27,6 +28,7 @@ services:
 
 ### PHP Worker ############################################
     php-worker:
+      restart: always
       build:
         context: ./php-worker
         args:
@@ -41,6 +43,7 @@ services:
 
 ### NGINX Server #########################################
     nginx:
+      restart: always
       build:
         context: ./nginx
       volumes:
@@ -60,6 +63,7 @@ services:
 
 ### MySQL ################################################
     mysql:
+      restart: always
       build:
         context: ./mysql
         args:
@@ -80,6 +84,7 @@ services:
 
 ### NodeJS ################################################
     node:
+      restart: always
       build:
         context: ./node
         args:
@@ -93,6 +98,7 @@ services:
 
 ### Python Gunicorn ################################################
     gunicorn:
+      restart: always
       build:
         context: ./gunicorn
       volumes:
