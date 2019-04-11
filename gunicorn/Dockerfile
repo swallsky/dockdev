@@ -18,7 +18,6 @@ RUN pip install gunicorn \
     && pip install -r /root/cms.txt
 
 # 容器启动时 启动
-WORKDIR /var/www/python/sscmspy
-#ENTRYPOINT ["/bin/bash", "/opt/sites/startup.sh"]
+WORKDIR /var/www/website
 CMD ["gunicorn","-b 0.0.0.0:5000","main:app"]
 EXPOSE 5000

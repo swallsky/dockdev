@@ -39,12 +39,6 @@ WORKSPACE_PGID=1000
 NGINX_HOST_HTTP_PORT=80
 # https主机默认端口
 NGINX_HOST_HTTPS_PORT=443
-# nginx日志路径
-# NGINX_HOST_LOG_PATH=./data/logs/nginx/
-# nginx站点路径
-# NGINX_SITES_PATH=./nginx/sites/
-# nginx ssl文件夹
-# NGINX_SSL_PATH=./nginx/ssl/
 
 ### PHP #################################################
 PHP_VERSION=7.2
@@ -54,6 +48,8 @@ NODE_VERSION=10.15.1
 
 ### PYTHON Gunicorn #################################################
 PYTHON_VERSION=3.6.8
+# 默认站点宿主机目录
+GUNICORN_DEFAULT_SITEDIR=../python/website
 
 ### MYSQL #################################################
 # mysql版本信息,默认为5.7
