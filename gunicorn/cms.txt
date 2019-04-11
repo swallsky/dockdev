@@ -11,8 +11,8 @@ itsdangerous==1.1.0
 Jinja2==2.10
 Mako==1.0.7
 MarkupSafe==1.1.0
-numpy==1.14.3
-pandas==0.23.0
+numpy==1.16.2
+pandas==0.24.2
 Pillow==5.4.1
 pycryptodome==3.7.3
 PyMySQL==0.9.3
