@@ -19,5 +19,7 @@ RUN pip install gunicorn \
 
 # 容器启动时 启动
 WORKDIR /var/www/website
-CMD ["gunicorn","-b 0.0.0.0:5000","main:app"]
-EXPOSE 5000
+
+CMD ["gunicorn","main:app","-b 0.0.0.0:5000"]
+
+#EXPOSE 5000

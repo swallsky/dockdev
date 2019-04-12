@@ -21,8 +21,6 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       expose:
         - "9000"
-      extra_hosts:
-        - "dockerhost:${DOCKER_HOST_IP}"
       networks:
         - backend
 
@@ -50,6 +48,7 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${DATA_PATH_HOST}/nginx/logs:/var/log/nginx
         - ${DATA_PATH_HOST}/nginx/sites:/etc/nginx/sites-available
+        - ${DATA_PATH_HOST}/nginx/upstream:/etc/nginx/conf.d/
         - ${DATA_PATH_HOST}/nginx/ssl:/etc/nginx/ssl
       ports:
         - "${NGINX_HOST_HTTP_PORT}:80"
@@ -105,8 +104,5 @@ services:
       volumes:
         - ${GUNICORN_DEFAULT_SITEDIR}:/var/www/website
       tty: true
-      ports:
-        - "8080:5000"
       networks:
-        - frontend
         - backend
