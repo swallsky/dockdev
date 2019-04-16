@@ -4,7 +4,7 @@ FROM php:${PHP_VERSION}-alpine
 USER root
 
 # CHANGE SOURCE && apk upgrade
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
     && apk update \
     && apk upgrade \
     && apk add --no-cache openssl \
