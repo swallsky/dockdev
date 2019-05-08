@@ -4,7 +4,7 @@ APP_CODE_PATH_HOST=../
 # 容器中程序路径
 APP_CODE_PATH_CONTAINER=/var/www:cached
 
-# 数据卷存储数径，例如mysql,nginx,gunicorn的动态数据等
+# 数据卷存储数径，例如mysql,nginx的动态数据等
 DATA_PATH_HOST=./data/
 
 # 数据卷驱动类型
@@ -45,11 +45,6 @@ PHP_VERSION=7.2
 
 ### NODE #################################################
 NODE_VERSION=10.15.1
-
-### PYTHON Gunicorn #################################################
-PYTHON_VERSION=3.6.8
-# 默认站点宿主机目录
-GUNICORN_DEFAULT_SITEDIR=../python/website
 
 ### MYSQL #################################################
 # mysql版本信息,默认为5.7

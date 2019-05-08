@@ -48,14 +48,12 @@ services:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
         - ${DATA_PATH_HOST}/nginx/logs:/var/log/nginx
         - ${DATA_PATH_HOST}/nginx/sites:/etc/nginx/sites-available
-        - ${DATA_PATH_HOST}/nginx/upstream:/etc/nginx/conf.d/
         - ${DATA_PATH_HOST}/nginx/ssl:/etc/nginx/ssl
       ports:
         - "${NGINX_HOST_HTTP_PORT}:80"
         - "${NGINX_HOST_HTTPS_PORT}:443"
       depends_on:
         - php-fpm
-        - gunicorn
       networks:
         - frontend
         - backend
@@ -94,15 +92,4 @@ services:
       tty: true
       networks:
         - frontend
-        - backend
-
-### Python Gunicorn ################################################
-    gunicorn:
-      restart: always
-      build:
-        context: ./gunicorn
-      volumes:
-        - ${GUNICORN_DEFAULT_SITEDIR}:/var/www/website
-      tty: true
-      networks:
         - backend
