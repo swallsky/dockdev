@@ -9,6 +9,8 @@ networks:
 volumes:
   mysql:
     driver: ${VOLUMES_DRIVER}
+  redis:
+    driver: ${VOLUMES_DRIVER}
 
 services:
 ### PHP-FPM ##############################################
@@ -92,4 +94,15 @@ services:
       tty: true
       networks:
         - frontend
+        - backend
+
+### Redis ################################################
+    redis:
+      restart: always
+      build: ./redis
+      volumes:
+        - ${DATA_PATH_HOST}/redis:/data
+      ports:
+        - "${REDIS_PORT}:6379"
+      networks:
         - backend
