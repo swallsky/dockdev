@@ -1,4 +1,4 @@
-### 删除为<none>的镜像
+### 删除为none的镜像
 ```
 docker images | grep 'none' | awk '{print $3}' | xargs docker rmi -f
 ```
