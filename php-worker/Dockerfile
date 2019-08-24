@@ -66,4 +66,4 @@ RUN php -v | head -n 1 | grep -q "PHP ${PHP_VERSION}."
 #--------------------------------------------------------------------------
 #
 
-WORKDIR /var/www/
+WORKDIR /etc/supervisor/conf.d/
