@@ -59,8 +59,12 @@ services:
       networks:
         - frontend
         - backend
+      logging:
+        driver: "json-file"
+        options:
+          max-size: "5g"
 
-### MySQL ################################################
+  ### MySQL ################################################
     mysql:
       restart: always
       build:
