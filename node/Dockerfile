@@ -9,6 +9,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories
     && apk upgrade \
     && apk add --no-cache openssl \
     && apk add --no-cache bash \
+    && apk add --no-cache git \
     && npm config set registry https://registry.npm.taobao.org
 
 # webhook
