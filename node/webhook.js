@@ -16,8 +16,8 @@ const deployServer = http.createServer(function(request, response) {
         response.end('Server Internal Error.');
         throw err;
       }
-      process.stderr.write(err);
-      process.stdout.write(stdout);
+      // process.stderr.write(err);
+      // process.stdout.write(stdout);
       response.writeHead(200);
       response.end('Deploy Done.');
     });
@@ -34,8 +34,8 @@ const deployServer = http.createServer(function(request, response) {
         response.end('Server Internal Error.');
         throw err;
       }
-      process.stderr.write(err);
-      process.stdout.write(stdout);
+      // process.stderr.write(err);
+      // process.stdout.write(stdout);
       response.writeHead(200);
       response.end('Deploy Done.');
     });
