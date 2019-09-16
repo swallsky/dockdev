@@ -92,6 +92,8 @@ services:
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       tty: true
+      ports:
+        - "${NODE_PORT}:9988"
       networks:
         - frontend
         - backend
