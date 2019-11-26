@@ -3,3 +3,4 @@
 nginx/ssl/
 logs/
 dockdev.tar
+bin.sh
