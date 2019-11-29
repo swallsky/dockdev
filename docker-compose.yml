@@ -115,9 +115,20 @@ services:
 
 ### Certbot ################################################
 #    certbot:
-#      image: certbot/certbot
+#      image: neilpang/acme.sh
 #      restart: always
 #      volumes:
 #        - ${DATA_PATH_HOST}/certbot/conf:/etc/letsencrypt
 #        - ${DATA_PATH_HOST}/certbot/www:/var/www/certbot
 #      entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+### neilpang/acme.sh 证书签发 ################################################
+    acme:
+      restart: always
+      build:
+        context: ./acme
+      volumes:
+        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
+      tty: true
+      networks:
+        - backend
