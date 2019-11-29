@@ -16,8 +16,24 @@ RUN apk update -f \
   tzdata \
   oath-toolkit-oathtool \
   tar \
+  git \
   && rm -rf /var/cache/apk/*
 
+WORKDIR /root
 
-RUN curl https://get.acme.sh | sh \
-    && ln -s  /root/.acme.sh/acme.sh  /usr/local/bin/acme.sh
+ADD ./acme.sh-master /root/acme.sh-master
+
+RUN cd acme.sh-master \
+    && chmod +x acme.sh \
+    && ./acme.sh --install  \
+    --home ~/myacme \
+    --config-home ~/myacme/data \
+    --cert-home  ~/mycerts \
+    --accountemail  "my@example.com" \
+    --accountkey  ~/myaccount.key \
+    --accountconf ~/myaccount.conf \
+    && ln -s  ~/myacme/acme.sh  /usr/local/bin/acme.sh \
+    && rm -rf ~/acme.sh-master
+
+#RUN curl https://get.acme.sh | sh \
+#    && ln -s  /root/.acme.sh/acme.sh  /usr/local/bin/acme.sh
