@@ -1,10 +1,11 @@
-ARG PHP_VERSION=7.2
+ARG PHP_VERSION=${PHP_VERSION}
 FROM php:${PHP_VERSION}-fpm-alpine3.9
 
 USER root
 
 # CHANGE SOURCE && apk upgrade
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
     && apk upgrade \
     && apk add --no-cache openssl \

@@ -4,7 +4,8 @@ FROM php:${PHP_VERSION}-alpine
 USER root
 
 # CHANGE SOURCE && apk upgrade
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+#RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/' /etc/apk/repositories \
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
     && apk update \
     && apk upgrade \
     && apk add --no-cache openssl \
@@ -39,11 +40,13 @@ RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/3.
 RUN addgroup -g 1000 docker_env \
     && adduser -u 1000 -G docker_env -D -H dockdev
 
+ADD ./composer /usr/local/bin/composer
+
 # Composer install
-RUN curl -sS http://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer \
-    && chmod u+x /usr/local/bin/composer \
-    && composer config -g repo.packagist composer https://packagist.phpcomposer.com
+#RUN curl -sS http://getcomposer.org/installer | php \
+#    && mv composer.phar /usr/local/bin/composer \
+RUN chmod u+x /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 RUN rm /var/cache/apk/* \
     && mkdir -p /var/www
