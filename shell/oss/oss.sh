@@ -1,9 +1,12 @@
 #!/bin/bash
 
 host="oss-cn-beijing.aliyuncs.com"
-bucket="sqllogs"
-Id="LTAI5tM62tXLiiZxD6vEUFhV"
-Key="1nB3aEaO6Ry2rKg46bOEyAywWQxo8x"
+# bucket名称
+bucket=""
+# id
+Id=""
+# 密钥
+Key=""
 # 参数1，PUT：上传，GET：下载
 method=$1
 # 参数2，上传时为本地源文件路径，下载时为oss源文件路径
